@@ -142,7 +142,7 @@ class CarInterface(CarInterfaceBase):
       tire_stiffness_factor = 0.385
       ret.lateralTuning.pid.kiBP, ret.lateralTuning.pid.kpBP, ret.lateralTuning.pid.kfBP = [[0.], [0.], [0.]]
       ret.lateralTuning.pid.kpV, ret.lateralTuning.pid.kiV = [[0.25], [0.05]]
-      ret.minSteerSpeed = 32 * CV.MPH_TO_MS
+      ret.minSteerSpeed = 31 * CV.MPH_TO_MS
     elif candidate == CAR.KIA_FORTE:
       ret.lateralTuning.pid.kfV = [0.00005]
       ret.mass = 3558. * CV.LB_TO_KG
@@ -168,6 +168,7 @@ class CarInterface(CarInterfaceBase):
                                                                          tire_stiffness_factor=tire_stiffness_factor)
 
     ret.enableCamera = is_ecu_disconnected(fingerprint[0], FINGERPRINTS, ECU_FINGERPRINT, candidate, Ecu.fwdCamera) or has_relay
+    ret.sccBus = -1
 
     return ret
 

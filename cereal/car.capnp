@@ -406,6 +406,7 @@ struct CarParams {
   carFw @44 :List(CarFw);
   radarTimeStep @45: Float32 = 0.05;  # time delta between radar updates, 20Hz is very standard
   communityFeature @46: Bool;  # true if a community maintained feature is detected
+  sccBus @49: Int8;
   fingerprintSource @49: FingerprintSource;
   networkLocation @50 :NetworkLocation;  # Where Panda/C2 is integrated into the car's CAN network
 
@@ -422,7 +423,7 @@ struct CarParams {
     kf @4 :Float32;
     kfV @5 :List(Float32);
     kfBP @6 :List(Float32);
-    
+
   }
 
   struct LongitudinalPIDTuning {
