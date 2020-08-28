@@ -97,7 +97,7 @@ class Controls:
               internet_needed or not openpilot_enabled_toggle
 
     # detect sound card presence and ensure successful init
-    sounds_available = not ANDROID or get_sound_card_online()
+    #sounds_available = not ANDROID or get_sound_card_online()
 
     car_recognized = self.CP.carName != 'mock'
     # If stock camera is disconnected, we loaded car controls and it's not dashcam mode
@@ -165,8 +165,8 @@ class Controls:
 
     self.startup_event = get_startup_event(car_recognized, controller_available)
 
-    if not sounds_available:
-      self.events.add(EventName.soundsUnavailable, static=True)
+    #if not sounds_available:
+    #  self.events.add(EventName.soundsUnavailable, static=True)
     if internet_needed:
       self.events.add(EventName.internetConnectivityNeeded, static=True)
     if community_feature_disallowed:
@@ -235,7 +235,7 @@ class Controls:
       self.events.add(EventName.controlsMismatch)
     if not self.sm.alive['plan'] and self.sm.alive['pathPlan']:
       # only plan not being received: radar not communicating
-      self.events.add(EventName.radarCommIssue)
+      #self.events.add(EventName.radarCommIssue)
     elif not self.sm.all_alive_and_valid() and self.sm.frame > 5 / DT_CTRL:
       self.events.add(EventName.commIssue)
     if not self.sm['pathPlan'].mpcSolutionValid and self.sm.frame > 5 / DT_CTRL:
@@ -647,7 +647,7 @@ def send_params(a, b, c):
   params.put("DistanceTraveled", a)
   params.put("DistanceTraveledEngaged", b)
   params.put("DistanceTraveledOverride", c)
-      
+
 def main(sm=None, pm=None, logcan=None, arne_sm=None):
   #params = Params()
   #dongle_id = params.get("DongleId").decode('utf-8')
